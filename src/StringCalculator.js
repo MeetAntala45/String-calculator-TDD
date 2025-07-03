@@ -1,6 +1,8 @@
 class StringCalculator {
   Add(inputString) {
-    
+    if (inputString === "") {
+      return 0;
+    }
   }
 }
 

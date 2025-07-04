@@ -26,4 +26,8 @@ describe("String Calculator", () => {
   test("should support newline as a valid delimiter", () => {
     expect(calculator.Add("1\n2,3")).toBe(6);
   });
+
+  test("should support custom delimiter defined using // syntax", () => {
+    expect(calculator.Add("//;\n1;2")).toBe(3);
+  });
 });

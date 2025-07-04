@@ -52,4 +52,8 @@ describe("String Calculator", () => {
   test("should support multiple single-character delimiters", () => {
     expect(calculator.Add("//[*][%]\n1*2%3")).toBe(6);
   });
+
+  test("should support multiple multi-character delimiters", () => {
+    expect(calculator.Add("//[**][%%]\n1**2%%3")).toBe(6);
+  });
 });

@@ -19,12 +19,14 @@ class StringCalculator {
     );
 
     const numbers = numbersPart.split(delimiterRegex).map(Number);
-    const negativeNumbers = numbers.filter((n) => n < 0);
+    const validNumbers = numbers.filter((n) => n <= 1000);
+
+    const negativeNumbers = validNumbers.filter((n) => n < 0);
     if (negativeNumbers.length > 0) {
       throw new Error(`Negatives not allowed: ${negativeNumbers.join(",")}`);
     }
 
-    return numbers.reduce((sum, num) => sum + num, 0);
+    return validNumbers.reduce((sum, num) => sum + num, 0);
   }
 }
 

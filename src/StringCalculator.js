@@ -37,10 +37,8 @@ class StringCalculator {
     let delimiters = [",", "\n"];
 
     if (inputString.startsWith("//[")) {
-      const start = inputString.indexOf("[") + 1;
-      const end = inputString.indexOf("]");
-      const delimiter = inputString.slice(start, end);
-      delimiters = [delimiter];
+      const matches = [...inputString.matchAll(/\[(.+?)\]/g)];
+      delimiters = matches.map((match) => match[1]);
       numbersPart = inputString.split("\n")[1];
     } else if (inputString.startsWith("//")) {
       const delimiterEndIndex = inputString.indexOf("\n");

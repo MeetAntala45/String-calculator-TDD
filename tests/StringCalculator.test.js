@@ -14,4 +14,8 @@ describe("String Calculator", () => {
   test("should return the number itself when a single number is provided", () => {
     expect(calculator.Add("5")).toBe(5);
   });
+
+  test("should return sum when two numbers are provided", () => {
+    expect(calculator.Add("3,7")).toBe(10);
+  });
 });

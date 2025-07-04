@@ -44,4 +44,8 @@ describe("String Calculator", () => {
     calculator.Add("3,4");
     expect(calculator.GetCalledCount()).toBe(2);
   });
+
+  test("should support custom delimiter of any length", () => {
+    expect(calculator.Add("//[***]\n1***2***3")).toBe(6);
+  });
 });

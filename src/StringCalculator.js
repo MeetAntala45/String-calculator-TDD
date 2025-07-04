@@ -13,7 +13,13 @@ class StringCalculator {
     let numbersPart = inputString;
     let delimiters = [",", "\n"];
 
-    if (inputString.startsWith("//")) {
+    if (inputString.startsWith("//[")) {
+      const start = inputString.indexOf("[") + 1;
+      const end = inputString.indexOf("]");
+      const delimiter = inputString.slice(start, end);
+      delimiters = [delimiter];
+      numbersPart = inputString.split("\n")[1];
+    } else if (inputString.startsWith("//")) {
       const delimiterEndIndex = inputString.indexOf("\n");
       const delimiterDeclaration = inputString.slice(2, delimiterEndIndex);
       delimiters = [delimiterDeclaration];

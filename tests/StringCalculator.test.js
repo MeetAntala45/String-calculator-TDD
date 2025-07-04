@@ -32,6 +32,10 @@ describe("String Calculator", () => {
   });
 
   test("should throw an error for negative numbers", () => {
-    expect(() => calculator.Add("1,-2,3")).toThrow("Negatives not allowed: -2");
+    expect(() => calculator.Add("1,-2")).toThrow("Negatives not allowed: -2");
+  });
+
+  test("should ignore numbers greater than 1000", () => {
+    expect(calculator.Add("2,1001,6")).toBe(8);
   });
 });

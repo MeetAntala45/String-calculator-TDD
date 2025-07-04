@@ -22,4 +22,8 @@ describe("String Calculator", () => {
   test("should return sum when unknown number of numbers are provided", () => {
     expect(calculator.Add("1,2,3,4,5")).toBe(15);
   });
+
+  test("should support newline as a valid delimiter", () => {
+    expect(calculator.Add("1\n2,3")).toBe(6);
+  });
 });

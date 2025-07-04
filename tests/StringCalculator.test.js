@@ -30,4 +30,8 @@ describe("String Calculator", () => {
   test("should support custom delimiter defined using // syntax", () => {
     expect(calculator.Add("//;\n1;2")).toBe(3);
   });
+
+  test("should throw an error for negative numbers", () => {
+    expect(() => calculator.Add("1,-2,3")).toThrow("Negatives not allowed: -2");
+  });
 });

@@ -10,21 +10,8 @@ class StringCalculator {
       return 0;
     }
 
-    let numbersPart = inputString;
-    let delimiters = [",", "\n"];
-
-    if (inputString.startsWith("//[")) {
-      const start = inputString.indexOf("[") + 1;
-      const end = inputString.indexOf("]");
-      const delimiter = inputString.slice(start, end);
-      delimiters = [delimiter];
-      numbersPart = inputString.split("\n")[1];
-    } else if (inputString.startsWith("//")) {
-      const delimiterEndIndex = inputString.indexOf("\n");
-      const delimiterDeclaration = inputString.slice(2, delimiterEndIndex);
-      delimiters = [delimiterDeclaration];
-      numbersPart = inputString.slice(delimiterEndIndex + 1);
-    }
+    const { numbersPart, delimiters } =
+      this.parseDelimitersAndNumbers(inputString);
 
     const delimiterRegex = new RegExp(
       delimiters.map((d) => escapeRegExp(d)).join("|")
@@ -43,6 +30,25 @@ class StringCalculator {
 
   GetCalledCount() {
     return this.callCount;
+  }
+
+  parseDelimitersAndNumbers(inputString) {
+    let numbersPart = inputString;
+    let delimiters = [",", "\n"];
+
+    if (inputString.startsWith("//[")) {
+      const start = inputString.indexOf("[") + 1;
+      const end = inputString.indexOf("]");
+      const delimiter = inputString.slice(start, end);
+      delimiters = [delimiter];
+      numbersPart = inputString.split("\n")[1];
+    } else if (inputString.startsWith("//")) {
+      const delimiterEndIndex = inputString.indexOf("\n");
+      const delimiterDeclaration = inputString.slice(2, delimiterEndIndex);
+      delimiters = [delimiterDeclaration];
+      numbersPart = inputString.slice(delimiterEndIndex + 1);
+    }
+    return { numbersPart, delimiters };
   }
 }
 

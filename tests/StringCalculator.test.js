@@ -38,4 +38,10 @@ describe("String Calculator", () => {
   test("should ignore numbers greater than 1000", () => {
     expect(calculator.Add("2,1001,6")).toBe(8);
   });
+
+  test("should return how many times Add was called", () => {
+    calculator.Add("1,2");
+    calculator.Add("3,4");
+    expect(calculator.GetCalledCount()).toBe(2);
+  });
 });

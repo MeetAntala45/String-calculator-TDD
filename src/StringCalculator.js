@@ -4,8 +4,16 @@ class StringCalculator {
       return 0;
     }
 
-    const sanitizedInput = inputString.replace(/\n/g, ",");
-    const numbers = sanitizedInput.split(",").map(Number);
+    let numbersPart = inputString;
+    let delimiter = /,|\n/;
+
+    if (inputString.startsWith("//")) {
+      const delimiterLineEnd = inputString.indexOf("\n");
+      delimiter = inputString[2];
+      numbersPart = inputString.slice(delimiterLineEnd + 1);
+    }
+
+    const numbers = numbersPart.split(new RegExp(delimiter)).map(Number);
     return numbers.reduce((sum, num) => sum + num, 0);
   }
 }

@@ -4,7 +4,8 @@ class StringCalculator {
       return 0;
     }
 
-    const numbers = inputString.split(",").map(Number);
+    const sanitizedInput = inputString.replace(/\n/g, ",");
+    const numbers = sanitizedInput.split(",").map(Number);
     return numbers.reduce((sum, num) => sum + num, 0);
   }
 }

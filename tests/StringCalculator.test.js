@@ -18,4 +18,8 @@ describe("String Calculator", () => {
   test("should return sum when two numbers are provided", () => {
     expect(calculator.Add("3,7")).toBe(10);
   });
+
+  test("should return sum when unknown number of numbers are provided", () => {
+    expect(calculator.Add("1,2,3,4,5")).toBe(15);
+  });
 });

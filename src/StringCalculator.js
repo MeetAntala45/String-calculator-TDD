@@ -1,5 +1,11 @@
 class StringCalculator {
+  constructor() {
+    this.callCount = 0;
+  }
+
   Add(inputString) {
+    this.callCount++;
+
     if (inputString === "") {
       return 0;
     }
@@ -27,6 +33,10 @@ class StringCalculator {
     }
 
     return validNumbers.reduce((sum, num) => sum + num, 0);
+  }
+
+  GetCalledCount() {
+    return this.callCount;
   }
 }
 

@@ -10,6 +10,8 @@ class StringCalculator {
     } else if (numbers.length === 2) {
       return parseInt(numbers[0] + numbers[1], 10);
     }
+
+    return numbers.reduce((sum, num) => sum + num, 0);
   }
 }
 
